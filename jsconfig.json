@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "baseUrl": "./",
+        "paths": {
+            "@controllers/*": ["api/controllers/*"],
+            "@models/*": ["api/models/*"],
+            "@api/*": ["api/*"],
+            "@mysql/*": ["dev/mysql/*"],
+            "@rest_client/*": ["dev/rest_client/*"]
+        }
+    }
+}
