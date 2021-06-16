@@ -1,6 +1,4 @@
-require("dotenv").config()
-
-const mysql = require('mysql')
+const mysql = require('mysql2')
 
 class Database {
     constructor() {

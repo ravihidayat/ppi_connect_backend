@@ -9,7 +9,11 @@ const app = express()
 
 app.use(express.json())
 
-app.get('/', async (req, res, next) => {
+app.get('/', (req, res, next) => {
+    res.send("Check out /member to get members data")
+})
+
+app.get('/member', async (req, res, next) => {
     const result = await db.query("SELECT * from member")
     res.json(result)
 })
