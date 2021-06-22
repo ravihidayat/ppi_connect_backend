@@ -18,6 +18,11 @@ app.get('/member', async (req, res, next) => {
     res.json(result)
 })
 
+app.get('/event', async (req, res, next) => {
+    const result = await db.query("SELECT * from event")
+    res.json(result)
+})
+
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`)
 })
