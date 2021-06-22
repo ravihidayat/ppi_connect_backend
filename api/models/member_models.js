@@ -18,7 +18,8 @@ class MemberModel {
     }
 
     create(member) {
-        return db.query("INSERT INTO member () VALUES ()", [])
+        return db.query("INSERT INTO member () VALUES ()", 
+        [member.matrix_card, member.email, member.password, member.name, member.program_code, member.degree, member.address, member.access_grant])
     }
 
     delete(matrixNumber) {
