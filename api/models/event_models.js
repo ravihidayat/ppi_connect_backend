@@ -1,4 +1,4 @@
-const db = require("@api/database")
+const db = require("../database")
 
 class EventModel {
     constructor() {
