@@ -11,7 +11,7 @@ class EventModel {
     }
 
     async getEventById(id) {
-        const rows = await db.query("SELECT * FROM event WHERE id = ?", [id])
+        const rows = await db.query("SELECT * FROM event WHERE event_id = ?", [id])
         return rows[0]
     }
 
