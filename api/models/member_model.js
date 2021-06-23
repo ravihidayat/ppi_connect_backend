@@ -1,6 +1,5 @@
 // imports Database class' to invoke query()
 const db = require("../database")
-const bcrypt = require('bcrypt')
 
 class MemberModel {
     constructor() {
@@ -21,10 +20,6 @@ class MemberModel {
     async getByAuth(email) {
         const rows = await db.query("SELECT * FROM member WHERE email = ?", [email])
         return rows[0]
-        // bcrypt.compare(password, rows[0]['password'], function(error, result){
-        //     if(result == true) return rows[0]
-        //     else return rows[0]['email']
-        // })
     }
 
     create(member) {
