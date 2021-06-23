@@ -20,4 +20,40 @@ router.get('/:id', async (req, res, next) => {
     }
 })
 
+router.post('/', async (req, res, next) => {
+    try {
+        const createResult = await eventModel.create(req.body)
+        if(!createResult.affectedRows) res.sendStatus(409)
+
+        const result = await eventModel.getEventById(createResult.insertId)
+        res.status(201).json(result)
+    } catch (error) {
+        console.log(error)
+    }
+})
+
+router.delete('/:id', async (req, res, next) => {
+    try {
+        const result = await eventModel.delete(req.params.id)
+        if (!result.affectedRows) return res.sendStatus(404)
+        res.sendStatus(200)
+    }
+    catch (e) {
+        console.log(e)
+    }
+})
+
+router.patch('/:id', async (req, res, next) => {
+    try {
+        const updateResult = await eventModel.update(req.params.id, req.body)
+        if (!updateResult.affectedRows) return res.sendStatus(404)
+
+        const result = await eventModel.getById(req.params.id)
+        res.json(result)
+    }
+    catch (e) {
+        console.log(e)
+    }
+})
+
 module.exports = router
