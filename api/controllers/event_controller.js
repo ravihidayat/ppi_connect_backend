@@ -5,6 +5,9 @@ const router = express.Router()
 router.get('/', async (req, res, next) => {
     try {
         var result = await eventModel.get()
+        for(let i = 0; i < result.length; i++){
+            result[i]['id'] = result[i]['event_id']
+        }
         res.json(result)
     } catch (error) {
         console.log(error)
