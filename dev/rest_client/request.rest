@@ -1,0 +1,72 @@
+# Uncomment the server you want to test out
+# Localhost - Change the IP address below to your PC's IP address
+@baseUrl = http://localhost:3000
+
+# JSON Server online
+# @baseUrl = https://my-json-server.typicode.com/jumail-utm/backend_node_mysql
+
+# REST API Server on heroku. Write the app URL obtained from heroku
+# @baseUrl = https://
+
+### Getting the list of Member
+GET {{baseUrl}}/member
+
+###  Getting a Member of given matric
+GET {{baseUrl}}/member/m1matric
+
+###  Getting a Member of given email and password
+GET {{baseUrl}}/member?email=todopsain11@gmail.com&password=m1password
+
+###  Create a new Member
+# POST {{baseUrl}}/member
+# Content-Type: application/json
+
+# {
+#     //"title": "New todo 3",
+#     //"completed" : false
+# }
+
+
+### Update the status of a given Member (whether is completed or not)
+# PATCH {{baseUrl}}/member/m1matric
+# Content-Type: application/json
+
+# {
+#     //"completed": false
+# }
+
+### Deleting a given Member
+# DELETE {{baseUrl}}/todos/21
+
+### Getting the list of Event
+GET {{baseUrl}}/event
+
+###  Getting a Event of given id
+GET {{baseUrl}}/event/1
+
+### Add an Event
+POST {{baseUrl}}/event
+Content-Type: application/json
+
+{
+    "event_title": "e0title",
+    "event_category": "Sport",
+    "event_venue": "e0venue",
+    "open_for": "Participants",
+    "closed_on": "2021-04-03T16:00:00.000Z",
+    "event_details": "e0details",
+    "event_url": "https://form.typeform.com/to/bOOqUGlh?typeform-medium=embed-snippet",
+    "event_date": "2021-05-04T16:00:00.000Z",
+    "event_pic1": "e0pic1.PNG"
+}
+
+### Update the status of a given Member
+PATCH {{baseUrl}}/event/4
+Content-Type: application/json
+
+{
+    "event_title": "e4title"
+}
+
+### Deleting a given todo
+DELETE {{baseUrl}}/event/4

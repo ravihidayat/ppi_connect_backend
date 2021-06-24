@@ -17,8 +17,9 @@ class EventModel {
 
     create(event){
         var today= new Date().toISOString().slice(0, 10);
-        return db.query("INSERT INTO event (event_title, event_category, event_venue, posted_on, open_for, closed_on, event_details, event_url, event_date, event_pic1, event_pic2, event_pic3, created_at) VALUES ()", 
-        [event.event_title, event.event_category, event.event_venue, today, event.open_for, event.closed_on, event.event_details, event.event_url, event.event_date, event.event_pic1, event.event_pic2, event.event_pic3, today])
+        return db.query("INSERT INTO event (event_title, event_category, event_venue, posted_on, open_for, closed_on, event_details, event_url, event_date, event_pic1)" +
+         "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
+        [event.event_title, event.event_category, event.event_venue, today, event.open_for, event.closed_on, event.event_details, event.event_url, event.event_date, event.event_pic1])
     }
 
     delete(eventId) {
@@ -34,7 +35,7 @@ class EventModel {
             content.push(attribute, event[attribute]);
         }
 
-        const stmt = `UPDATE member SET ${column.join(", ")} WHERE id = ?`;
+        const stmt = `UPDATE event SET ${column.join(", ")} WHERE event_id = ?`;
         return db.query(stmt, [...content, parseInt(id)]);
     }
 

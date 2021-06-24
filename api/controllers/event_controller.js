@@ -52,7 +52,7 @@ router.patch('/:id', async (req, res, next) => {
         const updateResult = await eventModel.update(req.params.id, req.body)
         if (!updateResult.affectedRows) return res.sendStatus(404)
 
-        const result = await eventModel.getById(req.params.id)
+        const result = await eventModel.getEventById(req.params.id)
         res.json(result)
     }
     catch (e) {
