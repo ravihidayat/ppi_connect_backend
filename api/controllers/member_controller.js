@@ -8,11 +8,12 @@ router.get('/', async (req, res, next) => {
     try {
         if(req.query.email != null && req.query.password != null){
             const result = await memberModel.getByAuth(req.query.email)
+            if(result == null) return res.json({})
             var hash = result['password']
             hash = hash.replace(/^\$2y(.+)$/i, '$2a$1')
             bcrypt.compare(req.query.password, hash, function(error, compRes){
                 if(compRes) res.json(result)
-                else res.json("Password not found")
+                else return res.json({})
             })
         }else{
             const result = await memberModel.get()
@@ -31,5 +32,6 @@ router.get('/:id', async (req, res, next) => {
         console.log(error)
     }
 })
+
 
 module.exports = router
