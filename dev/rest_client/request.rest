@@ -61,7 +61,7 @@ Content-Type: application/json
 }
 
 ### Update the status of a given Member
-PATCH {{baseUrl}}/event/4
+PATCH {{baseUrl}}/event/7
 Content-Type: application/json
 
 {

@@ -49,6 +49,7 @@ router.delete('/:id', async (req, res, next) => {
 
 router.patch('/:id', async (req, res, next) => {
     try {
+        delete req.body.id;
         const updateResult = await eventModel.update(req.params.id, req.body)
         if (!updateResult.affectedRows) return res.sendStatus(404)
 
