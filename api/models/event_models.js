@@ -26,7 +26,7 @@ class EventModel {
     }
 
     delete(eventId) {
-        return db.query("DELETE FROM `event` WHERE `event_id` = ?", [eventId])
+        return db.query("DELETE FROM event WHERE event_id = ?", [eventId])
     }
 
     update(id, event) {
