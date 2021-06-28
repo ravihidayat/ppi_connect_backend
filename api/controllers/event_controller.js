@@ -36,9 +36,9 @@ router.post('/', async (req, res, next) => {
     }
 })
 
-router.delete('/:id', async (req, res, next) => {
+router.delete('/:eid', async (req, res, next) => {
     try {
-        const result = await eventModel.delete(req.params.id)
+        const result = await eventModel.delete(req.params.eid)
         if (!result.affectedRows) return res.sendStatus(404)
         res.sendStatus(200)
     }
@@ -47,13 +47,13 @@ router.delete('/:id', async (req, res, next) => {
     }
 })
 
-router.patch('/:id', async (req, res, next) => {
+router.patch('/:eid', async (req, res, next) => {
     try {
         delete req.body.id;
-        const updateResult = await eventModel.update(req.params.id, req.body)
+        const updateResult = await eventModel.update(req.params.eid, req.body)
         if (!updateResult.affectedRows) return res.sendStatus(404)
 
-        const result = await eventModel.getEventById(req.params.id)
+        const result = await eventModel.getEventById(req.params.eid)
         res.json(result)
     }
     catch (e) {

@@ -26,7 +26,7 @@ class EventModel {
     }
 
     delete(eventId) {
-        return db.query("DELETE FROM event WHERE event_id = ?", [eventId])
+        return db.query("DELETE FROM `event` WHERE `event_id` = ?", [eventId])
     }
 
     update(id, event) {
@@ -35,10 +35,11 @@ class EventModel {
         
         for (const attribute in event){
             column.push("?? = ?");
+            if(attribute == null) continue;
             content.push(attribute, event[attribute]);
         }
 
-        const stmt = `UPDATE event SET ${column.join(", ")} WHERE event_id = ?`;
+        const stmt = `UPDATE \`event\` SET ${column.join(", ")} WHERE \`event_id\` = ?`;
         return db.query(stmt, [...content, parseInt(id)]);
     }
 

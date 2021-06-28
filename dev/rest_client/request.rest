@@ -1,6 +1,7 @@
 # Uncomment the server you want to test out
 # Localhost - Change the IP address below to your PC's IP address
 @baseUrl = http://localhost:3000
+#@baseUrl = https://ppiconnect.herokuapp.com
 
 # JSON Server online
 # @baseUrl = https://my-json-server.typicode.com/jumail-utm/backend_node_mysql
@@ -61,7 +62,7 @@ Content-Type: application/json
 }
 
 ### Update the status of a given Member
-PATCH {{baseUrl}}/event/7
+PATCH {{baseUrl}}/event/9
 Content-Type: application/json
 
 {
@@ -69,4 +70,4 @@ Content-Type: application/json
 }
 
 ### Deleting a given todo
-DELETE {{baseUrl}}/event/4
+DELETE {{baseUrl}}/event/9
